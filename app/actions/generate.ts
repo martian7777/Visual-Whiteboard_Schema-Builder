@@ -30,6 +30,10 @@ export async function generate(input: GenerateInput): Promise<GenerateResult> {
     return { ok: false, error: "Provide an image or a text description." };
   }
 
+  if (!input.userApiKey || !input.userApiKey.trim()) {
+    return { ok: false, error: "Please set your Gemini API key first." };
+  }
+
   const ai = getGemini(input.userApiKey);
 
   async function callModel(modelId: string): Promise<string> {

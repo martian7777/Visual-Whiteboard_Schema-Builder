@@ -52,10 +52,11 @@ export function InputPanel({ onResult, onStart }: Props) {
     setShowKeyModal(false);
   };
 
-  const canSubmit =
+  const hasInput =
     (tab === "upload" && image) ||
     (tab === "paste" && pasted) ||
     (tab === "text" && text.trim().length > 6);
+  const canSubmit = Boolean(hasInput) && hasUserApiKey;
 
   const submit = () => {
     setError(null);
@@ -121,8 +122,21 @@ export function InputPanel({ onResult, onStart }: Props) {
             : "bg-indigo-500 hover:bg-indigo-400 text-white"
         )}
       >
-        {pending ? "Cooking…" : "Generate schema"}
+        {pending
+          ? "Cooking…"
+          : !hasUserApiKey
+            ? "Set API key to generate"
+            : "Generate schema"}
       </button>
+
+      {!hasUserApiKey && (
+        <button
+          onClick={() => setShowKeyModal(true)}
+          className="w-full text-xs text-amber-300/90 bg-amber-500/10 border border-amber-500/30 rounded-lg px-3 py-2 hover:bg-amber-500/15 transition-colors text-left"
+        >
+          Your own Gemini API key is required. Click here to add one (stored locally in your browser).
+        </button>
+      )}
 
       <div className="flex items-center justify-between text-xs text-zinc-500 pt-2 border-t border-zinc-800/60">
         <span>Powered by Gemini 3.1 Pro</span>
@@ -184,7 +198,7 @@ function KeyModal({
 
         <div className="space-y-2">
           <p className="text-xs text-zinc-400 leading-relaxed">
-            By default, the server&apos;s API key is used. If you want to use your own Gemini key (e.g. from Google AI Studio), paste it below. It is stored securely in your local browser storage.
+            This app uses your own Gemini API key for every request. Grab one from Google AI Studio and paste it below. It is stored only in your local browser storage and sent directly with each generate call.
           </p>
           <div className="relative flex items-center">
             <input

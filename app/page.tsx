@@ -36,6 +36,12 @@ export default function LandingPage() {
               </svg>
             </Link>
             <Link
+              href="/examples"
+              className="w-full sm:w-auto px-8 py-4 rounded-xl border border-zinc-800 bg-zinc-900/40 hover:bg-zinc-800 hover:text-white font-medium transition-all text-zinc-300 flex items-center justify-center gap-2"
+            >
+              See Examples
+            </Link>
+            <Link
               href="/how-it-works"
               className="w-full sm:w-auto px-8 py-4 rounded-xl border border-zinc-800 bg-zinc-900/40 hover:bg-zinc-800 hover:text-white font-medium transition-all text-zinc-300 flex items-center justify-center gap-2"
             >
