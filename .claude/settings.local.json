@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(npx tsc *)",
+      "Bash(echo \"exit=$?\")",
+      "Bash(echo \"tsc_exit=$?\")",
+      "Bash(curl -s -o /dev/null -w \"HTTP=%{http_code} time=%{time_total}\\\\n\" http://localhost:3000/)"
+    ]
+  }
+}
