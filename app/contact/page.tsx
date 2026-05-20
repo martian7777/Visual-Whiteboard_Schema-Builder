@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-const GITHUB_URL = "https://github.com/martian7777/Visual-Whiteboard";
+const GITHUB_URL = "https://github.com/martian7777/Visual-Whiteboard_Schema-Builder";
 const EMAIL = "saqibiqbal27772@gmail.com";
 
 export const metadata: Metadata = {

@@ -12,7 +12,7 @@ const NAV = [
   { href: "/contact", label: "Contact" }
 ];
 
-export const GITHUB_URL = "https://github.com/martian7777/Visual-Whiteboard";
+export const GITHUB_URL = "https://github.com/martian7777/Visual-Whiteboard_Schema-Builder";
 export const CONTACT_EMAIL = "saqibiqbal27772@gmail.com";
 
 export function SiteHeader() {
