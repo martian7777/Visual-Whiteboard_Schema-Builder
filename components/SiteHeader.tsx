@@ -42,7 +42,13 @@ export function SiteHeader() {
             );
           })}
         </nav>
-        <div className="ml-auto flex items-center gap-2">
+        <div className="ml-auto flex items-center gap-4">
+          <Link
+            href="/generate"
+            className="px-3.5 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold tracking-wide transition-colors"
+          >
+            Launch Builder
+          </Link>
           <a
             href={GITHUB_URL}
             target="_blank"

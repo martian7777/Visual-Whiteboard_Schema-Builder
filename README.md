@@ -141,6 +141,10 @@ graph TD
     GEMINI_API_KEY=your_gemini_api_key_here
     ```
 
+    > [!NOTE]
+    > If you do not have a backend `GEMINI_API_KEY` configured in `.env`, or if you wish to override the server's key, you can enter your own API key directly in the frontend web interface using the **🔑 Set Custom Key** modal. This key is saved locally in your browser's storage and never sent anywhere other than to your Gemini API requests.
+
+
 4.  **Run Development Server**:
     ```bash
     npm run dev
