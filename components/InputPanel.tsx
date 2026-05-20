@@ -56,9 +56,17 @@ export function InputPanel({ onResult, onStart }: Props) {
     (tab === "upload" && image) ||
     (tab === "paste" && pasted) ||
     (tab === "text" && text.trim().length > 6);
-  const canSubmit = Boolean(hasInput) && hasUserApiKey;
+  const canSubmit = Boolean(hasInput);
 
   const submit = () => {
+    // Read the user API key directly from localStorage on submit
+    const key = localStorage.getItem("gemini_user_api_key");
+    if (!key) {
+      setError("Please configure your custom Gemini API key first.");
+      setShowKeyModal(true);
+      return;
+    }
+
     setError(null);
     onStart();
     startTransition(async () => {
@@ -71,11 +79,7 @@ export function InputPanel({ onResult, onStart }: Props) {
         payload = { text };
       }
 
-      // Read the user API key directly from localStorage on submit
-      const key = localStorage.getItem("gemini_user_api_key");
-      if (key) {
-        payload.userApiKey = key;
-      }
+      payload.userApiKey = key;
 
       const result = await generate(payload);
       if (!result.ok) setError(result.error);

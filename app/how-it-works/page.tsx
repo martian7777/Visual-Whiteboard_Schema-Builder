@@ -67,6 +67,10 @@ export default function HowItWorksPage() {
         Ready to try it?{" "}
         <Link href="/generate" className="text-indigo-300 hover:text-indigo-200 underline">
           Generate a schema
+        </Link>{" "}
+        or view our{" "}
+        <Link href="/examples" className="text-indigo-300 hover:text-indigo-200 underline">
+          interactive examples
         </Link>
         .
       </div>
