@@ -82,7 +82,7 @@ export function InputPanel({ onResult, onStart }: Props) {
             : "bg-indigo-500 hover:bg-indigo-400 text-white"
         )}
       >
-        {pending ? "Generating schema…" : "Generate schema"}
+        {pending ? "Cooking…" : "Generate schema"}
       </button>
 
       {error && <div className="text-sm text-red-400 whitespace-pre-wrap">{error}</div>}

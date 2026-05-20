@@ -4,6 +4,7 @@ import { useState } from "react";
 import { InputPanel } from "@/components/InputPanel";
 import { ResultTabs } from "@/components/ResultTabs";
 import { Hero } from "@/components/Hero";
+import { CookingPanel } from "@/components/CookingPanel";
 import type { GenerateResult } from "@/app/actions/generate";
 
 export default function HomePage() {
@@ -13,7 +14,7 @@ export default function HomePage() {
   return (
     <main className="min-h-screen px-4 sm:px-8 py-8 sm:py-12 max-w-7xl mx-auto space-y-8">
       <Hero />
-      <div className="grid lg:grid-cols-[400px_1fr] gap-6 lg:h-[calc(100vh-220px)] lg:min-h-[520px]">
+      <div className="grid lg:grid-cols-[400px_1fr] gap-6 lg:h-[calc(100vh-280px)] lg:min-h-[520px]">
         <InputPanel
           onStart={() => {
             setLoading(true);
@@ -25,7 +26,7 @@ export default function HomePage() {
           }}
         />
         <div className="min-h-[480px] lg:min-h-0">
-          {loading && <SkeletonPanel />}
+          {loading && <CookingPanel />}
           {!loading && result && result.ok && (
             <ResultTabs data={result.data} modelUsed={result.modelUsed} />
           )}
@@ -37,9 +38,6 @@ export default function HomePage() {
           {!loading && !result && <EmptyState />}
         </div>
       </div>
-      <footer className="text-xs text-zinc-600 pt-4">
-        Built with Next.js 15 · React 19 · Tailwind v4 · Gemini 3.1 Pro · Mermaid
-      </footer>
     </main>
   );
 }
@@ -54,18 +52,6 @@ function EmptyState() {
           to build. The schema, SQL, Prisma, and a live ER diagram appear here.
         </p>
       </div>
-    </div>
-  );
-}
-
-function SkeletonPanel() {
-  return (
-    <div className="h-full rounded-2xl border border-zinc-800 bg-[var(--panel)] p-6 space-y-3 animate-pulse">
-      <div className="h-4 w-1/3 bg-zinc-800 rounded" />
-      <div className="h-3 w-2/3 bg-zinc-800/70 rounded" />
-      <div className="h-64 bg-zinc-800/40 rounded mt-4" />
-      <div className="h-3 w-1/2 bg-zinc-800/70 rounded" />
-      <div className="h-3 w-1/3 bg-zinc-800/70 rounded" />
     </div>
   );
 }

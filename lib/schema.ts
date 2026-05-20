@@ -30,3 +30,21 @@ export const SchemaOutputJsonSchema = zodToJsonSchema(SchemaOutput, {
   $refStrategy: "none",
   target: "openApi3"
 });
+
+const KEY_RUN_RE = /\b(PK|FK|UK)(?:\s+(PK|FK|UK))+\b/g;
+
+export function sanitizeMermaid(input: string): string {
+  return input.replace(KEY_RUN_RE, (match) => {
+    const tokens = match.split(/\s+/).filter(Boolean);
+    const seen = new Set<string>();
+    const ordered: string[] = [];
+    for (const t of tokens) {
+      const up = t.toUpperCase();
+      if (!seen.has(up)) {
+        seen.add(up);
+        ordered.push(up);
+      }
+    }
+    return ordered.join(",");
+  });
+}

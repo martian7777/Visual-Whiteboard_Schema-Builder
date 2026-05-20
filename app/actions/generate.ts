@@ -1,7 +1,7 @@
 "use server";
 
 import { getGemini, MODEL_ID, FALLBACK_MODEL_ID } from "@/lib/gemini";
-import { SchemaOutput, SchemaOutputJsonSchema } from "@/lib/schema";
+import { SchemaOutput, SchemaOutputJsonSchema, sanitizeMermaid } from "@/lib/schema";
 import { SYSTEM_PROMPT } from "@/lib/prompt";
 
 export type GenerateInput = {
@@ -77,6 +77,7 @@ export async function generate(input: GenerateInput): Promise<GenerateResult> {
   try {
     const parsed = JSON.parse(raw);
     const data = SchemaOutput.parse(parsed);
+    data.mermaid = sanitizeMermaid(data.mermaid);
     return { ok: true, data, modelUsed };
   } catch (err) {
     return {
