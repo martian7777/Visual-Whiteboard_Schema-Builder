@@ -8,6 +8,7 @@ export type GenerateInput = {
   imageBase64?: string;
   mime?: string;
   text?: string;
+  userApiKey?: string;
 };
 
 export type GenerateResult =
@@ -29,7 +30,7 @@ export async function generate(input: GenerateInput): Promise<GenerateResult> {
     return { ok: false, error: "Provide an image or a text description." };
   }
 
-  const ai = getGemini();
+  const ai = getGemini(input.userApiKey);
 
   async function callModel(modelId: string): Promise<string> {
     const res = await ai.models.generateContent({

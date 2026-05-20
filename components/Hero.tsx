@@ -2,7 +2,7 @@ export function Hero() {
   return (
     <header className="space-y-2">
       <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-xs text-indigo-300">
-        <span className="size-1.5 rounded-full bg-indigo-400" /> AI Micro-SaaS · powered by Gemini 3.1 Pro
+        <span className="size-1.5 rounded-full bg-indigo-400" /> AI Micro-SaaS
       </div>
       <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight">
         Visual Whiteboard → Schema Builder
